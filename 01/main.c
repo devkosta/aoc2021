@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
                 res++;
             }
         }
+
         printf("Result 01: %d\n", res);
     }
 
@@ -38,6 +39,7 @@ int main(int argc, char *argv[]) {
                 res++;
             }
         }
+        
         printf("Result 02: %d\n", res);
     }
 
