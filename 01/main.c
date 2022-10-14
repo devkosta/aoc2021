@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 #define N 2048
+
 unsigned int numbers[N];
 int numbersSize = 0;
 
@@ -19,7 +20,8 @@ int main(int argc, char *argv[]) {
     // Problem 01
     {
         int res = 0;
-        for (int i = 1; i < N; ++i) {
+
+        for (int i = 1; i < numbersSize; ++i) {
             if (numbers[i] > numbers[i - 1]) {
                 res++;
             }
@@ -31,7 +33,8 @@ int main(int argc, char *argv[]) {
     // Problem 02
     {
         int res = 0;
-        for (int i = 1; i < N - 2; ++i) {
+
+        for (int i = 1; i < numbersSize - 2; ++i) {
             int A = numbers[i - 1] + numbers[i] + numbers[i + 1];
             int B = numbers[i] + numbers[i + 1] + numbers[i + 2];
 
@@ -39,7 +42,7 @@ int main(int argc, char *argv[]) {
                 res++;
             }
         }
-        
+
         printf("Result 02: %d\n", res);
     }
 

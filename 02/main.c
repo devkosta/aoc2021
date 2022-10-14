@@ -8,7 +8,6 @@ struct inst {
     int num;
     char dir[10];
 };
-
 struct inst instArr[N];
 int instSize = 0;
 
@@ -28,7 +27,8 @@ int main(int argc, char *argv[]) {
     // Problem 01
     {
         int forward = 0, down = 0;
-        for (int i = 0; i < N; ++i) {
+
+        for (int i = 0; i < instSize; ++i) {
             if (strcmp(instArr[i].dir, "forward") == 0) {
                 forward += instArr[i].num;
             } else if (strcmp(instArr[i].dir, "down") == 0) {
@@ -44,7 +44,8 @@ int main(int argc, char *argv[]) {
     // Problem 02
     {
         int aim = 0, forward = 0, down = 0;
-        for (int i = 0; i < N; ++i) {
+
+        for (int i = 0; i < instSize; ++i) {
             if (strcmp(instArr[i].dir, "forward") == 0) {
                 forward += instArr[i].num;
                 down += aim * instArr[i].num;
