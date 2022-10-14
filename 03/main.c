@@ -52,8 +52,7 @@ int findCommonBit(int side) {
         i++;
     }
 
-    char *res = "";
-    res = malloc(sizeof(char) * 12);
+    char res[12] = "";
 
     for (int i = 0; i < binSize; ++i) {
         if (bin[i].valid) {
