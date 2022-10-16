@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define N 1024
+#define N 2048 
 
 struct inst {
     int valid;
@@ -64,8 +64,7 @@ int findCommonBit(int side) {
 }
 
 int main(int argc, char *argv[]) {
-    assert(argc == 2 && "Must Provide One Argument => input.txt path");
-    printf("Input File: %s\n", argv[1]);
+    assert(argc == 2 && "Must Provide One Argument => input.txt path"); printf("Input File: %s\n", argv[1]);
 
     FILE *file = fopen(argv[1], "r");
     char str[12] = "";
