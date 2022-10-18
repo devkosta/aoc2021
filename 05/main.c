@@ -13,7 +13,13 @@ struct line {
 };
 int board[N][N] = {0};
 struct line lines[LINES];
-int lineSize = 0;
+int linesSize = 0;
+
+void swap(int *a, int *b) {
+    int tem = *a;
+    *a = *b;
+    *b = tem;
+}
 
 int main(int argc, char *argv[]) {
     assert(argc == 2 && "Must Provide One Argument => input.txt path");
@@ -24,11 +30,32 @@ int main(int argc, char *argv[]) {
 
     while (fscanf(file, "%d,%d -> %d,%d", &x1, &y1, &x2, &y2) == 4) {
         struct line curLine = {x1, y1, x2, y2};
-        lines[lineSize++] = curLine;
+        lines[linesSize++] = curLine;
     }
 
-    for (int i = 0; i < lineSize; ++i) {
-        printf("%d,%d -> %d,%d\n", lines[i].x1, lines[i].y1, lines[i].x2, lines[i].y2);
+    // Problem 01
+    {
+        int count = 0;
+
+        for (int i = 0; i < linesSize; ++i) {
+            struct line curLine = lines[i];
+
+            if (curLine.x1 != curLine.x2 && curLine.y1 != curLine.y2) {
+                continue;
+            }
+
+            if (curLine.x1 > curLine.x2) swap(&curLine.x1, &curLine.x2);
+            if (curLine.y1 > curLine.y2) swap(&curLine.y1, &curLine.y2);
+
+            for (int x = curLine.x1; x <= curLine.x2; ++x) {
+                for (int y = curLine.y1; y <= curLine.y2; ++y) {
+                    if (board[x][y] == 1) count++;
+                    board[x][y]++;
+                }
+            }
+        }
+
+        printf("Result 01: %d\n", count);
     }
 
     return 0;
