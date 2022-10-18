@@ -58,5 +58,51 @@ int main(int argc, char *argv[]) {
         printf("Result 01: %d\n", count);
     }
 
+    // Reset board values.
+    memset(board, 0, N * N * sizeof(int));
+
+    // Problem 02
+    {
+        int count = 0;
+
+        for (int i = 0; i < linesSize; ++i) {
+            struct line curLine = lines[i];
+
+            if (curLine.x1 != curLine.x2 && curLine.y1 != curLine.y2) {
+                // Diagonal Condition
+                int lineDir = curLine.y2 > curLine.y1 ? 1 : -1;
+
+                if (curLine.x2 > curLine.x1) {
+                    for (int x = curLine.x1; x <= curLine.x2; ++x) {
+                        int y = curLine.y1 + (x - curLine.x1) * lineDir;
+
+                        if (board[x][y] == 1) count++;
+                        board[x][y]++;
+                    }
+                } else {
+                    for (int x = curLine.x1; x >= curLine.x2; --x) {
+                        int y = curLine.y1 + (curLine.x1 - x) * lineDir;
+
+                        if (board[x][y] == 1) count++;
+                        board[x][y]++;
+                    }
+                }
+            } else {
+                // Vertical/Horizontal Conditon
+                if (curLine.x1 > curLine.x2) swap(&curLine.x1, &curLine.x2);
+                if (curLine.y1 > curLine.y2) swap(&curLine.y1, &curLine.y2);
+
+                for (int x = curLine.x1; x <= curLine.x2; ++x) {
+                    for (int y = curLine.y1; y <= curLine.y2; ++y) {
+                        if (board[x][y] == 1) count++;
+                        board[x][y]++;
+                    }
+                }
+            }
+        }
+
+        printf("Result 02: %d\n", count);
+    }
+
     return 0;
 }
