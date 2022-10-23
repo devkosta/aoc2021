@@ -6,7 +6,7 @@
 
 typedef unsigned long long int u64;
 
-int input[N] = {0};
+int input[N];
 int inputSize = 0;
 
 u64 solve(u64 fishes[], int numDays) {
