@@ -77,6 +77,7 @@ int main(int argc, char *argv[]) {
 
     mergeSort(crabs, 0, crabsSize - 1);
 
+    // Problem 01
     {
         int res = 0, mid = (crabsSize - 1) / 2;
         int median = crabs[mid];
@@ -86,6 +87,18 @@ int main(int argc, char *argv[]) {
         }
 
         printf("Result 01: %d\n", res);
+    }
+
+    // Problem 02
+    {
+        int res = 0, mid = (crabsSize - 1) / 2;
+        int median = crabs[mid];
+
+        for (int i = 0; i < crabsSize; ++i) {
+            res += abs(crabs[i] - median);
+        }
+
+        printf("Result 02: %d\n", res);
     }
 
     return 0;
